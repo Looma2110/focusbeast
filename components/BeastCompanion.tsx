@@ -166,7 +166,7 @@ export function BeastCompanion({ mood, message, level, evolution, xpPercentage, 
       </View>
 
       {onFocusPress ? (
-        <TouchableOpacity onPress={onFocusPress} activeOpacity={0.8}>
+        <TouchableOpacity onPress={onFocusPress} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`${beastName || BEAST_DEFS[beastType].label} companion. Tap to start focus.`}>
           <Animated.View style={[styles.beastContainer, {
             transform: [
               { translateY: floatY },
@@ -208,7 +208,7 @@ export function BeastCompanion({ mood, message, level, evolution, xpPercentage, 
       <Text style={styles.xpLabel}>{Math.round(xpPercentage)}%</Text>
 
       {onFocusPress && (
-        <TouchableOpacity style={styles.focusBtn} onPress={onFocusPress}>
+        <TouchableOpacity style={styles.focusBtn} onPress={onFocusPress} accessibilityRole="button" accessibilityLabel="Start focus session">
           <Text style={styles.focusBtnText}>START FOCUS</Text>
         </TouchableOpacity>
       )}

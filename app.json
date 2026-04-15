@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "FocusBeast",
+    "name": "FocusBeast: ADHD Focus Timer",
     "slug": "focusbeast",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,7 +18,8 @@
       "buildNumber": "1",
       "infoPlist": {
         "UIStatusBarStyle": "LightContent",
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "UIBackgroundModes": ["audio"]
       },
       "privacyManifests": {
         "NSPrivacyTracking": false,
@@ -38,7 +39,8 @@
         "backgroundColor": "#0F0F14"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.focusbeast.app"
+      "package": "com.focusbeast.app",
+      "versionCode": 1
     },
     "jsEngine": "hermes",
     "web": {
@@ -47,7 +49,20 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#B8AAFF"
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": false
+        }
+      ]
     ],
     "extra": {
       "eas": {

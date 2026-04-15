@@ -23,7 +23,7 @@ interface TaskSlotProps {
 export function TaskSlot({ text, completed, subtasks, onAdd, onComplete, onUncomplete, onEdit, onSplit, onDelete, onSubtaskComplete, selectedSubtaskId, noMargin, isSubtaskView, locked }: TaskSlotProps) {
   if (!text) {
     return (
-      <TouchableOpacity style={styles.slotEmpty} onPress={onAdd} activeOpacity={0.7}>
+      <TouchableOpacity style={styles.slotEmpty} onPress={onAdd} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Add a task">
         <View style={styles.plusCircle}>
           <Text style={styles.plusIcon}>+</Text>
         </View>
@@ -43,6 +43,10 @@ export function TaskSlot({ text, completed, subtasks, onAdd, onComplete, onUncom
         activeOpacity={0.7}
         onLongPress={onDelete}
         delayLongPress={500}
+        accessibilityRole="checkbox"
+        accessibilityState={{ checked: completed }}
+        accessibilityLabel={`${completed ? 'Completed' : 'Incomplete'} task: ${text}${hasSubtasks ? `, ${completedSubs} of ${subtasks!.length} steps done` : ''}`}
+        accessibilityHint={completed && onUncomplete ? 'Double tap to mark as incomplete' : !completed && onComplete ? 'Double tap to complete' : undefined}
       >
         <View style={[styles.checkbox, completed && styles.checkboxCompleted]}>
           {completed && <Text style={styles.checkmark}>&#10003;</Text>}
@@ -58,12 +62,12 @@ export function TaskSlot({ text, completed, subtasks, onAdd, onComplete, onUncom
         {!completed && !locked && (
           <View style={styles.actions}>
             {!hasSubtasks && onSplit && (
-              <TouchableOpacity onPress={onSplit} style={styles.actionBtn}>
+              <TouchableOpacity onPress={onSplit} style={styles.actionBtn} accessibilityRole="button" accessibilityLabel={`Split ${text} into steps`}>
                 <Text style={styles.splitIcon}>Split</Text>
               </TouchableOpacity>
             )}
             {onEdit && (
-              <TouchableOpacity onPress={onEdit} style={styles.actionBtn}>
+              <TouchableOpacity onPress={onEdit} style={styles.actionBtn} accessibilityRole="button" accessibilityLabel={`Edit task: ${text}`}>
                 <Text style={styles.editIcon}>Edit</Text>
               </TouchableOpacity>
             )}
@@ -82,6 +86,10 @@ export function TaskSlot({ text, completed, subtasks, onAdd, onComplete, onUncom
                 style={[styles.subtaskRow, isSubSelected && styles.subtaskRowSelected]}
                 onPress={() => onSubtaskComplete?.(sub.id)}
                 activeOpacity={0.7}
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: sub.completed }}
+                accessibilityLabel={`${sub.completed ? 'Completed' : 'Incomplete'} step: ${sub.text}`}
+                accessibilityHint={sub.completed ? 'Step completed' : 'Double tap to complete this step'}
               >
                 <View style={[styles.subCheckbox, sub.completed && styles.subCheckboxDone, isSubSelected && !sub.completed && styles.subCheckboxSelected]}>
                   {sub.completed && <Text style={styles.subCheck}>&#10003;</Text>}
@@ -93,7 +101,7 @@ export function TaskSlot({ text, completed, subtasks, onAdd, onComplete, onUncom
             )
           })}
           {onSplit && (
-            <TouchableOpacity style={styles.editStepsBtn} onPress={onSplit}>
+            <TouchableOpacity style={styles.editStepsBtn} onPress={onSplit} accessibilityRole="button" accessibilityLabel="Edit steps">
               <Text style={styles.editStepsText}>Edit steps</Text>
             </TouchableOpacity>
           )}

@@ -160,14 +160,14 @@ export default function HomeScreen() {
           ))}
 
           {todayTasks.length < 3 && !allDone && (
-            <TouchableOpacity style={styles.addSlot} onPress={() => { setNewTaskText(''); setShowAddModal(true) }} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.addSlot} onPress={() => { setNewTaskText(''); setShowAddModal(true) }} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Add a new task" accessibilityHint="Opens a form to add a new task for today">
               <Text style={styles.addSlotText}>+ Add task ({3 - todayTasks.length} left)</Text>
             </TouchableOpacity>
           )}
         </View>
 
         {todayTasks.length > 0 && !allDone && (
-          <TouchableOpacity style={styles.focusCtaBtn} onPress={() => router.push('/focus')}>
+          <TouchableOpacity style={styles.focusCtaBtn} onPress={() => router.push('/focus')} accessibilityRole="button" accessibilityLabel="Start focus session" accessibilityHint="Opens focus timer mode">
             <Text style={styles.focusCtaText}>START FOCUS SESSION</Text>
           </TouchableOpacity>
         )}
