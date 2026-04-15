@@ -401,6 +401,9 @@ export default function FocusScreen() {
                   key={d}
                   style={[styles.durationChip, duration === d && styles.durationChipActive]}
                   onPress={() => setDuration(d)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${d} minutes`}
+                  accessibilityState={{ selected: duration === d }}
                 >
                   <Text style={[styles.durationChipText, duration === d && styles.durationChipTextActive]}>{d}m</Text>
                 </TouchableOpacity>
@@ -418,6 +421,9 @@ export default function FocusScreen() {
                     key={s.key}
                     style={[styles.soundChip, selectedSound === s.key && styles.soundChipActive, isLocked && styles.soundChipLocked]}
                     onPress={() => !isLocked ? setSelectedSound(s.key) : setShowPaywall(true)}
+                    accessibilityRole="button"
+                    accessibilityLabel={isLocked ? `${s.label} sound, premium only` : `${s.label} sound`}
+                    accessibilityState={{ selected: selectedSound === s.key && !isLocked }}
                   >
                     <Text style={[styles.soundChipText, selectedSound === s.key && styles.soundChipTextActive, isLocked && styles.soundChipTextLocked]}>
                       {isLocked ? 'PRO' : s.label}
@@ -435,6 +441,8 @@ export default function FocusScreen() {
           <TouchableOpacity
             style={styles.startBtn}
             onPress={handleStart}
+            accessibilityRole="button"
+            accessibilityLabel="Begin focus session"
           >
             <Text style={styles.startBtnText}>BEGIN</Text>
           </TouchableOpacity>
@@ -452,10 +460,10 @@ export default function FocusScreen() {
           </View>
 
           <View style={styles.runningControls}>
-            <TouchableOpacity style={styles.pauseBtn} onPress={handlePause}>
+            <TouchableOpacity style={styles.pauseBtn} onPress={handlePause} accessibilityRole="button" accessibilityLabel={isPaused ? 'Resume session' : 'Pause session'}>
               <Text style={styles.pauseBtnText}>{isPaused ? 'RESUME' : 'PAUSE'}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.stopBtn} onPress={handleStop}>
+            <TouchableOpacity style={styles.stopBtn} onPress={handleStop} accessibilityRole="button" accessibilityLabel="Stop session">
               <Text style={styles.stopBtnText}>STOP</Text>
             </TouchableOpacity>
           </View>

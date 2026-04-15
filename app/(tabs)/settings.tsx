@@ -100,6 +100,9 @@ export default function SettingsScreen() {
                 }
               }}
               activeOpacity={isUnlocked ? 0.7 : 1}
+              accessibilityRole="button"
+              accessibilityLabel={`${beastNames[key] || def.label} beast${isActive ? ', active' : ''}${!isUnlocked ? `, locked, ${needsPremium ? 'premium only' : canUnlock ? 'unlockable' : `${def.unlockXP} XP needed`}` : ''}`}
+              accessibilityHint={isActive ? 'Tap to rename' : isUnlocked ? 'Tap to select' : undefined}
             >
               <Image
                 source={BEAST_ICONS[key]}
@@ -129,13 +132,13 @@ export default function SettingsScreen() {
           premium: newPremium,
           unlockedBeasts: newPremium ? ['dog', 'cat', 'monkey', 'rabbit', 'fox', 'lion'] : base,
         })
-      }}>
+      }} accessibilityRole="switch" accessibilityState={{ checked: premium }} accessibilityLabel="Premium debug toggle">
         <Text style={styles.rowLabel}>Premium (debug)</Text>
         <View style={[styles.toggle, premium && styles.toggleOn]}>
           <View style={[styles.toggleDot, premium && styles.toggleDotOn]} />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.row} onPress={() => updateSettings({ soundEnabled: !settings.soundEnabled })}>
+      <TouchableOpacity style={styles.row} onPress={() => updateSettings({ soundEnabled: !settings.soundEnabled })} accessibilityRole="switch" accessibilityState={{ checked: settings.soundEnabled }} accessibilityLabel="Sound effects">
         <Text style={styles.rowLabel}>Sound effects</Text>
         <View style={[styles.toggle, settings.soundEnabled && styles.toggleOn]}>
           <View style={[styles.toggleDot, settings.soundEnabled && styles.toggleDotOn]} />
@@ -153,7 +156,7 @@ export default function SettingsScreen() {
           await cancelReminder()
           updateSettings({ notificationsEnabled: false })
         }
-      }}>
+      }} accessibilityRole="switch" accessibilityState={{ checked: settings.notificationsEnabled }} accessibilityLabel="Reminders">
         <Text style={styles.rowLabel}>Reminders</Text>
         <View style={[styles.toggle, settings.notificationsEnabled && styles.toggleOn]}>
           <View style={[styles.toggleDot, settings.notificationsEnabled && styles.toggleDotOn]} />
@@ -172,21 +175,23 @@ export default function SettingsScreen() {
           </View>
         </View>
         {!premium && (
-          <TouchableOpacity style={styles.upgradeBtn}>
+          <TouchableOpacity style={styles.upgradeBtn} accessibilityRole="button" accessibilityLabel="Upgrade to premium">
             <Text style={styles.upgradeText}>UPGRADE  |  $39.99/YR</Text>
           </TouchableOpacity>
         )}
-        <TouchableOpacity style={styles.restoreBtn}>
+        <TouchableOpacity style={styles.restoreBtn} accessibilityRole="button" accessibilityLabel="Restore purchases">
           <Text style={styles.restoreText}>Restore purchases</Text>
         </TouchableOpacity>
       </View>
 
       <Text style={styles.sectionTitle}>DATA</Text>
-      <TouchableOpacity style={styles.dataBtn} onPress={() => Alert.alert('Export', 'Coming soon.')}>
+      <TouchableOpacity style={styles.dataBtn} onPress={() => Alert.alert('Export', 'Coming soon.')} accessibilityRole="button" accessibilityLabel="Export data">
         <Text style={styles.dataBtnText}>Export data</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.dataBtnDanger}
+        accessibilityRole="button"
+        accessibilityLabel="Reset all data, this cannot be undone"
         onPress={() => {
           Alert.alert('Reset', 'Delete all data? This cannot be undone.', [
             { text: 'Cancel', style: 'cancel' },
@@ -219,7 +224,6 @@ export default function SettingsScreen() {
       >
         <Text style={styles.dataBtnDangerText}>Reset all data</Text>
       </TouchableOpacity>
-
       <Text style={styles.sectionTitle}>ABOUT</Text>
       <View style={styles.aboutCard}>
         <Text style={styles.version}>FocusBeast v1.0.0</Text>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "FocusBeast: ADHD Focus Timer",
+    "name": "FocusBeast",
     "slug": "focusbeast",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -55,12 +55,6 @@
         {
           "icon": "./assets/icon.png",
           "color": "#B8AAFF"
-        }
-      ],
-      [
-        "expo-av",
-        {
-          "microphonePermission": false
         }
       ]
     ],
