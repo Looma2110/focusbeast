@@ -67,7 +67,7 @@ function CompletionScreen({ xpEarned, beastState, activeBeast, beastName, onNewS
           <Text style={styles.xpEarnedText}>+{displayedXP} XP</Text>
         </View>
         <Text style={styles.completedSub}>Deep work accomplished.</Text>
-        <TouchableOpacity style={styles.doneBtn} onPress={onNewSession}>
+        <TouchableOpacity style={styles.doneBtn} onPress={onNewSession} accessibilityRole="button" accessibilityLabel="Start new session">
           <Text style={styles.doneBtnText}>NEW SESSION</Text>
         </TouchableOpacity>
       </Animated.View>
@@ -303,7 +303,7 @@ export default function FocusScreen() {
           beastName={beastNames[activeBeast]}
         />
         <Text style={styles.allDoneSub}>Start a free session for bonus XP, or come back tomorrow.</Text>
-        <TouchableOpacity style={styles.startBtn} onPress={() => { setSelectedType(null); setSelectedId(null); handleStart() }}>
+        <TouchableOpacity style={styles.startBtn} onPress={() => { setSelectedType(null); setSelectedId(null); handleStart() }} accessibilityRole="button" accessibilityLabel="Start free focus session">
           <Text style={styles.startBtnText}>FREE FOCUS SESSION</Text>
         </TouchableOpacity>
       </View>
@@ -318,7 +318,7 @@ export default function FocusScreen() {
     return (
       <ScrollView style={styles.scrollContainer} contentContainerStyle={[styles.scrollContent, { paddingTop: insets.top + 24 }]}>
         <View style={styles.closeRow}>
-          <TouchableOpacity onPress={() => setShowPaywall(false)} style={styles.closeBtn}>
+          <TouchableOpacity onPress={() => setShowPaywall(false)} style={styles.closeBtn} accessibilityRole="button" accessibilityLabel="Close paywall">
             <Text style={styles.closeText}>Close</Text>
           </TouchableOpacity>
         </View>
@@ -335,16 +335,16 @@ export default function FocusScreen() {
           ))}
         </View>
 
-        <TouchableOpacity style={styles.yearlyBtn}>
+        <TouchableOpacity style={styles.yearlyBtn} accessibilityRole="button" accessibilityLabel="Subscribe yearly, 39 dollars 99 cents per year, 7 day free trial">
           <Text style={styles.yearlyBtnText}>$39.99 / YEAR</Text>
           <Text style={styles.yearlyBtnSub}>7-day free trial  |  Save 33%</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.monthlyBtn}>
+        <TouchableOpacity style={styles.monthlyBtn} accessibilityRole="button" accessibilityLabel="Subscribe monthly, 4 dollars 99 cents per month">
           <Text style={styles.monthlyBtnText}>$4.99 / MONTH</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => setShowPaywall(false)} style={styles.laterBtn}>
+        <TouchableOpacity onPress={() => setShowPaywall(false)} style={styles.laterBtn} accessibilityRole="button" accessibilityLabel="Not now, dismiss">
           <Text style={styles.laterLink}>Not now</Text>
         </TouchableOpacity>
       </ScrollView>

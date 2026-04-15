@@ -121,7 +121,7 @@ Three tasks. That's the whole app. Start your first one now.
 | **Last Name** | (ton nom) |
 | **Phone Number** | (ton numéro) |
 | **Email** | support@focusbeast.app |
-| **Review Notes** | "FocusBeast is a productivity app for ADHD users. No login required. Add up to 3 tasks per day, complete them, use the focus timer. Premium features can be tested using the debug toggle in Settings. Free tier is fully functional." |
+| **Review Notes** | "FocusBeast is a productivity app for ADHD users. No login required. Add up to 3 tasks per day, complete them, use the focus timer. The app is fully functional in free tier. Premium unlocks additional beasts and focus sessions." |
 
 ## In-App Purchases
 
