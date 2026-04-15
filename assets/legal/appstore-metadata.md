@@ -108,9 +108,9 @@ Three tasks. That's the whole app. Start your first one now.
 
 | Champ | Valeur |
 |-------|--------|
-| **Privacy Policy URL** | https://loom2110.github.io/focusbeast/privacy-policy.html |
-| **Support URL** | https://loom2110.github.io/focusbeast/support.html |
-| **EULA URL** | https://loom2110.github.io/focusbeast/terms-of-service.html |
+| **Privacy Policy URL** | https://looma2110.github.io/focusbeast/privacy-policy.html |
+| **Support URL** | https://looma2110.github.io/focusbeast/support.html |
+| **EULA URL** | https://looma2110.github.io/focusbeast/terms-of-service.html |
 | **Marketing URL** | (optional, leave blank for MVP) |
 
 ## App Review Information

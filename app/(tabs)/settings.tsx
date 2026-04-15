@@ -32,7 +32,7 @@ async function cancelReminder() {
 const BEAST_ICONS: Record<BeastType, any> = {
   dog: require('../../assets/beast/dog/happy.png'),
   cat: require('../../assets/beast/cat/happy.png'),
-  rabbit: require('../../assets/beast/dog/happy.png'),
+  rabbit: require('../../assets/beast/rabbit/happy.png'),
   fox: require('../../assets/beast/dog/happy.png'),
   lion: require('../../assets/beast/dog/happy.png'),
   monkey: require('../../assets/beast/monkey/happy.png'),
